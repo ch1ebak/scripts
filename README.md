@@ -14,7 +14,7 @@ This is my very simple system information tool written in Bash.
 
 
 # Rofi Utilities
-> [!INFO]
+> [!WARNING]
 > Moved from my [dotfiles](https://github.com/ch1ebak/dotfiles)
 
 A utility for stuff I'm too lazy to open the terminal for.
