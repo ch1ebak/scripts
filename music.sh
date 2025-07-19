@@ -1,9 +1,15 @@
 #!/bin/bash
 
 # Launch mpd
-if ! pgrep -x "gedit" > /dev/null
+if ! pgrep -x "mpd" > /dev/null
 then
   mpd ~/.config/mpd/mpd.conf 
+fi
+
+# Launch YAMS
+if ! pgrep -x "yams" > /dev/null
+then
+  yams
 fi
 
 # Launch rmpc
