@@ -399,23 +399,10 @@ else
 fi
 }
 
-Reload () {
-if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-  nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-  nohup bash -c "killall waybar && waybar & disown"
-elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-  qtile cmd-obj -o cmd -f reload_config
-else
-  echo "What?"
-fi
-}
-
-
 declare -a options=(
 Screenshot
 Wallpaper
 Themes
-Reload
 "Quit"
 )
 
