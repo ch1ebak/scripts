@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Launch mpd
 if ! pgrep -x "mpd" > /dev/null
