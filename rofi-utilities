@@ -21,7 +21,53 @@ fi
 }
 
 Themes () {
+  ayu () {
+    # btop
+    sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # neovim
+    sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # rofi
+    sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    # rmpc
+    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("ayu"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
+    # Xresources
+    sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
+    # WMs
+    ## qtile
+    sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    ## hyprland
+    ### hyprland
+    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(444A55ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@color*.*@color\ =\ rgba(323843ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    ### hyprlock
+    sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+    ### hyprpaper
+    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
+    ### waybar
+    sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    ## reset
+    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
+      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+      nohup bash -c "killall waybar && waybar & disown"
+    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+      qtile cmd-obj -o cmd -f reload_config
+    else
+      echo "What?"
+    fi
+    # dunst
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1F2430"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#CCCAC2"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#FFCC66"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    killall -e dunst & sleep 1; dunstify "Theme switched to Ayu" &
+  }
   catppuccin () {
+    # btop
+    sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/catppuccin-mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -64,6 +110,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Catppuccin" &
   }
   dracula () {
+    # btop
+    sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -106,6 +154,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Dracula" &
   }
   everforest () {
+    # btop
+    sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/Everforest\ Dark\ -\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -148,6 +198,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to everforest" &
   }
   grayscale () {
+    # btop
+    sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -165,9 +217,9 @@ Themes () {
     sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7a7a7aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(2a2a2aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(191919ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(727272ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@color*.*@color\ =\ rgba(393939ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
     ### hyprlock
     sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
     ### hyprpaper
@@ -190,6 +242,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to grayscale" &
   }
   gruvbox () {
+    # btop
+    sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/GruvboxDark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -232,6 +286,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Gruvbox" &
   }
   kanagawa () {
+    # btop
+    sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -274,6 +330,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Kanagawa" &
   }
   poimandres () {
+    # btop
+    sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -316,6 +374,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Poimandres" &
   }
   spacegray () {
+    # btop
+    sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/SpaceGray@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -358,6 +418,8 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Spacegray" &
   }
   tokyonight () {
+    # btop
+    sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # ghostty
     sed -i 's@themes/*.*@themes/tokyonight@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
@@ -400,6 +462,7 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Tokyo Night" &
   }
   declare -a options=(
+  ayu
   catppuccin
   dracula
   everforest
