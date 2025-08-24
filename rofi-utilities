@@ -329,6 +329,50 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#2d4f67"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Kanagawa" &
   }
+  onedark () {
+    # btop
+    sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/OneHalfDark@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # neovim
+    sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # rofi
+    sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    # rmpc
+    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("onedark"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
+    # Xresources
+    sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
+    # WMs
+    ## qtile
+    sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    ## hyprland
+    ### hyprland
+    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(848b98ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@color*.*@color\ =\ rgba(393f4aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    ### hyprlock
+    sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+    ### hyprpaper
+    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
+    ### waybar
+    sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    ## reset
+    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
+      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+      nohup bash -c "killall waybar && waybar & disown"
+    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+      qtile cmd-obj -o cmd -f reload_config
+    else
+      echo "What?"
+    fi
+    # dunst
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1B1E28"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E4F0FB"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5DE4C7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    killall -e dunst & sleep 1; dunstify "Theme switched to Poimandres" &
+  }
   poimandres () {
     # btop
     sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
@@ -469,6 +513,7 @@ Themes () {
   grayscale
   gruvbox
   kanagawa
+  onedark
   poimandres
   spacegray
   tokyonight
