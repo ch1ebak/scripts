@@ -371,7 +371,7 @@ Themes () {
     sed -i 's@background\ =\ "#*.*@background\ =\ "#1B1E28"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E4F0FB"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5DE4C7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Poimandres" &
+    killall -e dunst & sleep 1; dunstify "Theme switched to One Dark" &
   }
   poimandres () {
     # btop
@@ -481,7 +481,7 @@ Themes () {
     sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(f7768eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
     sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(414868ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
     sed -i 's@color*.*@color\ =\ rgba(24283bff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
     ### hyprlock
@@ -502,7 +502,7 @@ Themes () {
     # dunst
     sed -i 's@background\ =\ "#*.*@background\ =\ "#1a1b26"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#a9b1d6"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#f7768e"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7aa2f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Tokyo Night" &
   }
   declare -a options=(
