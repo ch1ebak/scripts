@@ -29,8 +29,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -39,8 +39,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -75,8 +75,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/catppuccin-mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -85,8 +85,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -121,8 +121,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -131,8 +131,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -167,8 +167,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/Everforest\ Dark\ -\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -177,8 +177,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -213,8 +213,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -223,8 +223,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -259,8 +259,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/GruvboxDark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -269,8 +269,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -305,8 +305,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -315,8 +315,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(2d4f67ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -351,8 +351,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/OneHalfDark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -361,8 +361,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -397,8 +397,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -407,8 +407,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5DE4C7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -443,8 +443,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/SpaceGray@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -453,8 +453,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -489,8 +489,8 @@ Themes () {
     # ghostty
     sed -i 's@themes/*.*@themes/tokyonight@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -499,8 +499,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
