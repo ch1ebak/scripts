@@ -23,7 +23,6 @@ A utility for stuff I'm too lazy to open the terminal for.
 - takes screenshots on X11 and Wayland (session dependent)
 - randomly sets wallpaper on Qtile and Hyprland
 - switches themes
-- reloads Qtile or Hyprland configs.
 
 
 # Music Launcher
