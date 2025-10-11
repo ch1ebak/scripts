@@ -165,7 +165,7 @@ Themes () {
     # emacs
     # sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
-    sed -i 's@themes/*.*@themes/Everforest\ Dark\  Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
+    sed -i 's@themes/*.*@themes/Everforest\ Dark\   Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
     # neovim
     sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
     sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
