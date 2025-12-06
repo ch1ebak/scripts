@@ -25,14 +25,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-ayu-mirage\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-ayu-mirage\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Ayu Mirage',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Ayu Mirage',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -73,14 +73,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -121,14 +121,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -169,14 +169,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -217,14 +217,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'almost-mono-black\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'real-mono-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -265,14 +265,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -313,14 +313,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'kanagawa-wave\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'kanagawa-wave\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Kanagawa (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Kanagawa (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -361,14 +361,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-one\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-one\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'OneHalfDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'OneHalfDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -409,14 +409,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'poimandres\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'poimandres\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Poimandres',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Poimandres',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -457,14 +457,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -505,14 +505,14 @@ Themes () {
     # btop
     sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    # sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
     # wezterm
-    sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
     # neovim
-    sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+    # sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
