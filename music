@@ -7,9 +7,9 @@ then
 fi
 
 # Launch YAMS
-if ! pgrep -x "yams" > /dev/null
+if ! pgrep -x "mpdscribble" > /dev/null
 then
-  yams
+  mpdscribble
 fi
 
 # Launch rmpc

@@ -21,13 +21,18 @@ fi
 }
 
 Themes () {
-  pills-ayu () {
+  ayu () {
     # btop
     sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-ayu-mirage\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Ayu Mirage',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -36,7 +41,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsayu\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -47,7 +53,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -63,13 +69,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#FFCC66"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Ayu" &
   }
-  pills-catppuccin () {
+  catppuccin () {
     # btop
     sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -78,7 +89,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillscatppuccin\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -89,7 +101,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -105,13 +117,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#cba6f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Catppuccin" &
   }
-  pills-dracula () {
+  dracula () {
     # btop
     sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -120,7 +137,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsdracula\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -131,7 +149,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -147,13 +165,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5AF78E"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Dracula" &
   }
-  pills-everforest () {
+  everforest () {
     # btop
     sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -162,7 +185,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillseverforest\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -173,7 +197,7 @@ Themes () {
     ## #hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -189,13 +213,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#a7c080"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to everforest" &
   }
-  pills-grayscale () {
+  grayscale () {
     # btop
     sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-meltbus\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+    sed -i "s/load-theme\ '*.*/load-theme 'real-mono-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -204,7 +233,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsgrayscale\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -215,7 +245,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -231,13 +261,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7a7a7a"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to grayscale" &
   }
-  pills-gruvbox () {
+  gruvbox () {
     # btop
     sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -246,7 +281,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsgruvbox\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -257,7 +293,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -273,13 +309,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#98971a"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Gruvbox" &
   }
-  pills-kanagawa () {
+  kanagawa () {
     # btop
     sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'kanagawa-wave\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Kanagawa (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -288,7 +329,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillskanagawa\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(2d4f67ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -299,7 +341,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -315,13 +357,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#2d4f67"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Kanagawa" &
   }
-  pills-onedark () {
+  onedark () {
     # btop
     sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-one\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'OneHalfDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -330,7 +377,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsonedark\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -341,7 +389,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -357,13 +405,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#61afef"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to One Dark" &
   }
-  pills-poimandres () {
+  poimandres () {
     # btop
     sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'poimandres\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Poimandres',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -372,7 +425,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillspoimandres\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5DE4C7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -383,7 +437,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -399,13 +453,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5DE4C7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Poimandres" &
   }
-  pills-spacegray () {
+  spacegray () {
     # btop
     sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -414,7 +473,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillsspacegray\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -425,7 +485,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -441,13 +501,18 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#b04b57"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Spacegray" &
   }
-  pills-tokyonight () {
+  tokyonight () {
     # btop
     sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # emacs
     sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # wezterm
+    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    # neovim
+    # sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+    # sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
@@ -456,7 +521,8 @@ Themes () {
     sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
     ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.pillstokyonight\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+    # sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
     ## hyprland
     ### hyprland
     sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
@@ -467,469 +533,7 @@ Themes () {
     ### hyprpaper
     sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
     ### waybar
-    sed -i 's@themes/*.*@themes/pills-tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1a1b26"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#a9b1d6"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7aa2f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Tokyo Night" &
-	}
-  mini-ayu () {
-    # btop
-    sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-ayu-mirage\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("ayu"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.miniayu\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(444A55ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(323843ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1F2430"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#CCCAC2"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#FFCC66"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Ayu" &
-  }
-  mini-catppuccin () {
-    # btop
-    sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("catppuccin"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minicatppuccin\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(45475aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(313244ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e1e2e"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#cdd6f4"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#cba6f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Catppuccin" &
-  }
-  mini-dracula () {
-    # btop
-    sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("dracula"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minidracula\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4D4D4Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(3D3F4Aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#282A36"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E6E6E6"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5AF78E"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Dracula" &
-  }
-  mini-everforest () {
-    # btop
-    sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("everforest"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minieverforest\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(272e33ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(1e2326ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ## #hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e2326"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#d3c6aa"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#a7c080"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to everforest" &
-  }
-  mini-grayscale () {
-    # btop
-    sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-meltbus\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("grayscale"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minigrayscale\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(727272ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(393939ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#080808"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#cccccc"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7a7a7a"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to grayscale" &
-  }
-  mini-gruvbox () {
-    # btop
-    sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("gruvbox"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minigruvbox\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(504945ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(3c3836ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#282828"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#ebdbb2"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#98971a"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Gruvbox" &
-  }
-  mini-kanagawa () {
-    # btop
-    sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'kanagawa-wave\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("kanagawa"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minikanagawa\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(2d4f67ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(35353Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(1f1f28ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1f1f28"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#dcd7ba"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#2d4f67"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Kanagawa" &
-  }
-  mini-onedark () {
-    # btop
-    sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-one\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("onedark"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minionedark\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(848b98ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(393f4aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#282c34"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#abb2bf"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#61afef"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to One Dark" &
-  }
-  mini-poimandres () {
-    # btop
-    sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'poimandres\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("poimandres"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minipoimandres\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5DE4C7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(3b3f4fff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(303340ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1B1E28"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E4F0FB"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5DE4C7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Poimandres" &
-  }
-  mini-spacegray () {
-    # btop
-    sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("spacegray"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minispacegray\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4c4f56ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(363942ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
-      nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-      qtile cmd-obj -o cmd -f reload_config
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#20242d"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#b3b8c3"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#b04b57"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e dunst & sleep 1; dunstify "Theme switched to Spacegray" &
-  }
-  mini-tokyonight () {
-    # btop
-    sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
-    # emacs
-    sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-    # ghostty
-    sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # rofi
-    sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("tokyonight"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    sed -i 's/themes.*\ import\ colors*.*/themes.minitokyonight\ import\ colors,\ screens,\ widget_defaults/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(414868ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(24283bff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/mini-tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
     ## reset
     if [ $XDG_SESSION_TYPE = 'wayland' ]; then
       nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
@@ -946,28 +550,17 @@ Themes () {
     killall -e dunst & sleep 1; dunstify "Theme switched to Tokyo Night" &
   }
   declare -a options=(
-  pills-ayu
-  pills-catppuccin
-  pills-dracula
-  pills-everforest
-  pills-grayscale
-  pills-gruvbox
-  pills-kanagawa
-  pills-onedark
-  pills-poimandres
-  pills-spacegray
-  pills-tokyonight
-  mini-ayu
-  mini-catppuccin
-  mini-dracula
-  mini-everforest
-  mini-grayscale
-  mini-gruvbox
-  mini-kanagawa
-  mini-onedark
-  mini-poimandres
-  mini-spacegray
-  mini-tokyonight
+  ayu
+  catppuccin
+  dracula
+  everforest
+  grayscale
+  gruvbox
+  kanagawa
+  onedark
+  poimandres
+  spacegray
+  tokyonight
   "quit"
   )
   choice=$(printf '%s\n' "${options[@]}" | rofi -m 1 -dmenu -i -l 20 -p 'Utilities')
