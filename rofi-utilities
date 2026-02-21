@@ -6,13 +6,7 @@ set -u
 
 Wallpaper () {
 if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-  directory=/home/$USER/Obrazy/tapety/
-  if [ -d "$directory" ]; then
-    random_background=$(ls $directory/* | shuf -n 1)
-    hyprctl hyprpaper unload all
-    hyprctl hyprpaper preload $random_background
-    hyprctl hyprpaper wallpaper ", $random_background"
-  fi
+	swaybg -i $(shuf -e -n1 $HOME/Obrazy/tapety/*) & disown
 elif [ $XDG_SESSION_TYPE = 'x11' ]; then
   shuf -e -n1 $HOME/Obrazy/tapety/* | xargs feh --bg-fill
 else
@@ -28,38 +22,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-ayu-mirage\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Ayu Mirage',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'ayu',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("ayu"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(444A55ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(323843ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(FFCC66ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(444A55ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(323843ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/ayu.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/ayu.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/ayu.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -76,38 +62,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("catppuccin"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(45475aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(313244ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(45475aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(313244ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/catppuccin.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -124,38 +102,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("dracula"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
-    # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4D4D4Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(3D3F4Aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+		# WMs
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4D4D4Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(3D3F4Aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/dracula.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -172,38 +142,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("everforest"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(272e33ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(1e2326ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ## #hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(272e33ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(1e2326ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/everforest.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -220,38 +182,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'real-mono-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("grayscale"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(727272ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(393939ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(727272ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(393939ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/grayscale.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -268,38 +222,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("gruvbox"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(504945ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(3c3836ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(504945ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(3c3836ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/gruvbox.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -316,38 +262,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'kanagawa-wave\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Kanagawa (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("kanagawa"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(2d4f67ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(35353Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(1f1f28ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(2d4f67ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(35353Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(1f1f28ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/kanagawa.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/kanagawa.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/kanagawa.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -364,38 +302,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-one\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'OneHalfDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'onedark',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("onedark"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(848b98ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(393f4aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(61afefff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(848b98ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(393f4aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/onedark.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/onedark.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/onedark.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -412,38 +342,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'poimandres\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Poimandres',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'poimandres',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("poimandres"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5DE4C7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(3b3f4fff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(303340ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5DE4C7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(3b3f4fff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(303340ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/poimandres.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/poimandres.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/poimandres.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -460,38 +382,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("spacegray"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4c4f56ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(363942ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4c4f56ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(363942ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/spacegray.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -508,38 +422,30 @@ Themes () {
     sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
     # ghostty
     sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
-    # wezterm
-    # sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    # neovim
-    # sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-    # sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
     # rmpc
     sed -i 's/theme:\ Some("*.*"),/theme:\ Some("tokyonight"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
-    # Xresources
-    sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
     # WMs
-    ## qtile
-    # sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-    # sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-    ## hyprland
-    ### hyprland
-    sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(414868ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    sed -i 's@color*.*@color\ =\ rgba(24283bff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-    ### hyprlock
-    sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-    ### hyprpaper
-    sed -i 's@hypr/wallpapers*.*@hypr/wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprpaper.conf
-    ### waybar
-    sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-    ## reset
-    if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-      nohup bash -c "killall -e hyprpaper & sleep 1; hyprpaper &"
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(414868ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(24283bff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
       nohup bash -c "killall waybar && waybar & disown"
-    elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/tokyonight.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
+      nohup bash -c "killall waybar && waybar & disown"
     else
       echo "What?"
     fi
@@ -603,4 +509,3 @@ elif [ "$choice" ]; then
 else
 	echo "Program Terminated." && exit 1
 fi
-
