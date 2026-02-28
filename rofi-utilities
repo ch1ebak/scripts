@@ -44,8 +44,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/ayu.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/ayu.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/ayu.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/ayu.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -84,8 +85,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/catppuccin.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -124,8 +126,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/dracula.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -164,8 +167,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/everforest.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -204,8 +208,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/grayscale.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -244,8 +249,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/gruvbox.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -284,8 +290,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/kanagawa.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/kanagawa.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/kanagawa.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -324,8 +331,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/onedark.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/onedark.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/onedark.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/onedark.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -364,8 +372,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/poimandres.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/poimandres.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/poimandres.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/poimandres.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -404,8 +413,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/spacegray.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
@@ -444,8 +454,9 @@ Themes () {
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/tokyonight.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
 			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "mmsg -d reload_config"
     else
       echo "What?"
     fi
