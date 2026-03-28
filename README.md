@@ -14,7 +14,7 @@ This is my very simple system information tool written in Bash.
 
 
 # Rofi Utilities
-![]()
+![](https://raw.githubusercontent.com/ch1ebak/scripts/refs/heads/main/screenshots/rofi-utilities.png)
 > [!WARNING]
 > Moved from my [dotfiles](https://github.com/ch1ebak/dotfiles)
 
