@@ -20,8 +20,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("ayu"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -74,8 +72,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("catppuccin"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -128,8 +124,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("dracula"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -182,8 +176,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("everforest"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -236,8 +228,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("grayscale"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -290,8 +280,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("gruvbox"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -344,8 +332,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("kanagawa"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -398,8 +384,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("onedark"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -452,8 +436,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("poimandres"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -506,8 +488,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("spacegray"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
@@ -560,8 +540,6 @@ Themes () {
     sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # rmpc
-    sed -i 's/theme:\ Some("*.*"),/theme:\ Some("tokyonight"),/g' /home/$USER/.dotfiles/.config/rmpc/config.ron
     # terminal
     if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
       sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
