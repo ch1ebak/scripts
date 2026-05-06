@@ -18,16 +18,10 @@ Themes () {
   ayu () {
     # btop
     sed -i 's@themes/*.*@themes/ayu.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/ayu"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Ayu Mirage@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Ayu Mirage',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
 			sed -i "s@colorscheme\ *.*@colorscheme ayu-mirage'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -50,7 +44,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.ayu\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/ayu.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/ayu"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/ayu.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -70,16 +63,10 @@ Themes () {
   catppuccin () {
     # btop
     sed -i 's@themes/*.*@themes/catppuccin.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -102,7 +89,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/catppuccin"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/catppuccin.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -122,16 +108,10 @@ Themes () {
   dracula () {
     # btop
     sed -i 's@themes/*.*@themes/dracula.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -154,7 +134,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/dracula"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/dracula.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -174,16 +153,10 @@ Themes () {
   everforest () {
     # btop
     sed -i 's@themes/*.*@themes/everforest-dark-hard.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -206,7 +179,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/everforest"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/everforest.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -226,16 +198,10 @@ Themes () {
   grayscale () {
     # btop
     sed -i 's@themes/*.*@themes/greyscale.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -258,7 +224,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/grayscale"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/grayscale.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -278,16 +243,10 @@ Themes () {
   gruvbox () {
     # btop
     sed -i 's@themes/*.*@themes/gruvbox_dark_v2.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -310,7 +269,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/gruvbox"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/gruvbox.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -330,16 +288,10 @@ Themes () {
   kanagawa () {
     # btop
     sed -i 's@themes/*.*@themes/kanagawa-wave.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/kanagawa"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Kanagawa\ Wave@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Kanagawa (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme kanagawa-wave'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -362,7 +314,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.kanagawa\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/kanagawa.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/kanagawa"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/kanagawa.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -379,19 +330,58 @@ Themes () {
     sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#2d4f67"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
     killall -e dunst & sleep 1; dunstify "Theme switched to Kanagawa" &
   }
+  nvim-alt () {
+    # btop
+    sed -i 's@themes/*.*@themes/nvim-alt.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/nvim-alt@g' /home/$USER/.dotfiles/.config/ghostty/config
+    # rofi
+    sed -i 's@themes/*.*@themes/nvim-alt"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+		# editors
+		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
+      sed -i "s@colorscheme\ *.*@colorscheme default'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@theme\ =\ *.*@theme\ =\ 'nvim-alt',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
+      sed -i "s/load-theme\ '*.*/load-theme 'doom-rouge\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+		else
+			echo "Editor not updated"
+		fi
+    # WMs
+    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
+			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(fd7dae1f)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(303742ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@color*.*@color\ =\ rgba(2c2e33ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/nvim-alt.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+			sed -i 's@wallpapers/*.*@wallpapers/nvim-alt.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/nvim-alt.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/nvim-alt.png &"
+      nohup bash -c "killall waybar && waybar & disown"
+    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.nvim-alt\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/nvim-alt.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+      qtile cmd-obj -o cmd -f reload_config
+		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/nvim-alt.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/nvim-alt.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/nvim-alt.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/nvim-alt.png &"
+      nohup bash -c "mmsg -d reload_config"
+    else
+      echo "What?"
+    fi
+    # dunst
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1a212d"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#d7dae1"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#aaedb7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    killall -e dunst & sleep 1; dunstify "Theme switched to Nvim Alt" &
+  }
   onedark () {
     # btop
     sed -i 's@themes/*.*@themes/onedark.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/onedark"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/One Half Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'OneHalfDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme onedark'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -414,7 +404,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.onedark\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/onedark.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/onedark"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/onedark.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -434,16 +423,10 @@ Themes () {
   poimandres () {
     # btop
     sed -i 's@themes/*.*@themes/poimandres.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/poimandres"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/poimandres@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Poimandres',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme poimandres'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -466,7 +449,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.poimandres\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/poimandres.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/poimandres"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/poimandres.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -486,16 +468,10 @@ Themes () {
   spacegray () {
     # btop
     sed -i 's@themes/*.*@themes/spacegray.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
+    # ghostty
+    sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
     # rofi
     sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -518,7 +494,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/spacegray"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/spacegray.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -540,14 +515,8 @@ Themes () {
     sed -i 's@themes/*.*@themes/tokyo-night.theme"@g' /home/$USER/.dotfiles/.config/btop/btop.conf
     # rofi
     sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
+    # ghostty
+    sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
 		# editors
 		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
       sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
@@ -570,7 +539,6 @@ Themes () {
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@xresources/*.*@xresources/tokyonight"@g' /home/$USER/.dotfiles/.Xresources
       qtile cmd-obj -o cmd -f reload_config
 		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
 			sed -i 's@themes/*.*@themes/tokyonight.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
@@ -595,6 +563,7 @@ Themes () {
   grayscale
   gruvbox
   kanagawa
+  nvim-alt
   onedark
   poimandres
   spacegray
