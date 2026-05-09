@@ -28,6 +28,5 @@ A utility for stuff I'm too lazy to open the terminal for.
   - detects if Neovim or Emacs config directories are present
   - detects the output of $XDG_CURRENT_DESKTOP and updates the config files/refreshes the WM depending on if the output equals Mango, Hyprland, or Qtile.
 
-
-# Music Launcher
-Nothing special. Just launches MPD (if not running), MPDScrobbler (for Last.fm scrobbling), and RMPC.
+> [!NOTE]
+> The music script has been removed.
