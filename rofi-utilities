@@ -5,19 +5,19 @@ set -u
 
 Projects () {
   Scripts () {
-  	emacsclient -c -a 'emacs' ~/Projekty/
+  	emacs ~/Projekty/
   }
   NixOS_BTW () {
-  	emacsclient -c -a 'emacs' ~/.nixos-btw/configuration.nix
+  	emacs ~/.nixos-btw/configuration.nix
   }
   Dotfiles () {
-  	emacsclient -c -a 'emacs' ~/.dotfiles/.config/
+  	emacs ~/.dotfiles/.config/
   }
   Writing () {
   	emacs --eval '(wg-open-workgroup nil)'
   }
   Notes () {
-  	emacsclient -c -a 'emacs' ~/Dokumenty/notatki
+  	emacs ~/Dokumenty/notatki
   }
   
   declare -a options=(
@@ -51,7 +51,7 @@ Restart () {
   }
   Restart_Waybar () {
   	if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-  		nohup bash -c "killall waybar && waybar & disown"
+  		nohup bash -c "killall .waybar-wrapped && waybar & disown"
 			dunstify "Waybar restarted."
   	else
   		echo "What?"
@@ -127,15 +127,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(cba6f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(45475aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(313244ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/catppuccin")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -176,15 +173,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
 		# WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(5AF78Eff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4D4D4Dff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(3D3F4Aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/dracula")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -225,15 +219,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(a7c080ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(272e33ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(1e2326ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/everforest")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -274,15 +265,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(ccccccff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(727272ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(393939ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/grayscale")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -323,15 +311,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(98971aff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(504945ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(3c3836ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/gruvbox")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -372,15 +357,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(b04b57ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(4c4f56ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(363942ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/spacegray")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
@@ -421,15 +403,12 @@ Themes () {
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'hyprland' ]; then
-			sed -i 's@col.active_border*.*@col.active_border\ =\ rgba(7aa2f7ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@col.inactive_border*.*@col.inactive_border\ =\ rgba(414868ff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@color*.*@color\ =\ rgba(24283bff)@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
-			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprland.conf
+    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/tokyonight")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
 			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
 			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
-      nohup bash -c "killall waybar && waybar & disown"
+      nohup bash -c "killall .waybar-wrapped && waybar & disown"
     elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
 			sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
 			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
