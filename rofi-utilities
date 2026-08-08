@@ -85,7 +85,7 @@ Restart () {
 
 Screenshot () {
 if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-  sleep 1; grim -o HDMI-A-1 -l 9 -t png
+  sleep 1; grim -o HDMI-A-1 -t png -l 5 /mnt/User/Obrazy/screenshots/$(date +'%s_grim.png')
   notify-send "Screenshot Taken"
 elif [ $XDG_SESSION_TYPE = 'x11' ]; then
   scrot -d 1 -M 0 -q 9
