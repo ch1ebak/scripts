@@ -3,54 +3,17 @@
 set -e
 set -u
 
-Projects () {
-  Scripts () {
-  	emacsclient -c -a 'emacs' ~/Projekty/
-  }
-  NixOS_BTW () {
-  	emacsclient -c -a 'emacs' ~/.nixos-btw/configuration.nix
-  }
-  Dotfiles () {
-  	emacsclient -c -a 'emacs' ~/.dotfiles/.config/
-  }
-  Writing () {
-  	emacs --eval '(wg-open-workgroup nil)'
-  }
-  Notes () {
-  	emacs ~/Dokumenty/notatki
-  }
-  
-  declare -a options=(
-  	Dotfiles
-  	NixOS_BTW
-		Scripts
-  	Notes	
-  	Writing	
-  	"Quit")
-  
-  choice=$(printf '%s\n' "${options[@]}" | rofi -m 1 -dmenu -i -l 20 -p 'Projects')
-  
-  if [[ "$choice" == quit ]]; then
-  	echo "Program Terminated." && exit 1
-  elif [ "$choice" ]; then
-  	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
-  	"$cfg"
-  else
-  	echo "Program Terminated." && exit 1
-  fi
-}
-
 Restart () {
   Restart_SwayBG () {
-		if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-			nohup bash -c "pkill swaybg; swaybg -i $(shuf -e -n1 $HOME/Obrazy/wallpapers/*) & disown"
+		if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+			nohup bash -c "pkill swaybg; swaybg -i $(shuf -e -n1 "$HOME"/Obrazy/wallpapers/*) & disown"
 			dunstify "SwayBG restarted."
 		else
 			echo "What?"
 		fi
   }
   Restart_Waybar () {
-  	if [ $XDG_SESSION_TYPE = 'wayland' ]; then
+  	if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
   		nohup bash -c "killall .waybar-wrapped && waybar & disown"
 			dunstify "Waybar restarted."
   	else
@@ -58,7 +21,7 @@ Restart () {
   	fi
   }
   Restart_Mango () {
-  	if [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
+  	if [ "$XDG_CURRENT_DESKTOP" = 'mango' ]; then
   		nohup bash -c "mmsg dispatch reload_config"
 			dunstify "Mango restarted."
   	else
@@ -84,10 +47,10 @@ Restart () {
 }
 
 Screenshot () {
-if [ $XDG_SESSION_TYPE = 'wayland' ]; then
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
   sleep 1; grim -o HDMI-A-1 -t png -l 5 /mnt/User/Obrazy/screenshots/$(date +'%s_grim.png')
   notify-send "Screenshot Taken"
-elif [ $XDG_SESSION_TYPE = 'x11' ]; then
+elif [ "$XDG_SESSION_TYPE" = 'x11' ]; then
   scrot -d 1 -M 0 -q 9
   notify-send "Screenshot Taken"
 else
@@ -96,10 +59,10 @@ fi
 }
 
 Wallpaper () {
-if [ $XDG_SESSION_TYPE = 'wayland' ]; then
-	swaybg -i $(shuf -e -n1 $HOME/Obrazy/wallpapers/*) & disown
-elif [ $XDG_SESSION_TYPE = 'x11' ]; then
-  shuf -e -n1 $HOME/Obrazy/wallpapers/* | xargs feh --bg-fill
+if [ "$XDG_SESSION_TYPE" = 'wayland' ]; then
+	swaybg -i $(shuf -e -n1 "$HOME"/Obrazy/wallpapers/*) & disown
+elif [ "$XDG_SESSION_TYPE" = 'x11' ]; then
+  shuf -e -n1 "$HOME"/Obrazy/wallpapers/* | xargs feh --bg-fill
 else
   echo "What?"
 fi
@@ -108,332 +71,191 @@ fi
 Themes () {
   catppuccin () {
     # rofi
-    sed -i 's@themes/*.*@themes/catppuccin"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    sed -i 's@themes/*.*@themes/catppuccin"@g' /home/"$USER"/.dotfiles/.config/rofi/config.rasi
     # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    if [ -d /home/"$USER"/.dotfiles/.config/ghostty ]; then
+      sed -i 's@themes/*.*@themes/Catppuccin Mocha@g' /home/"$USER"/.dotfiles/.config/ghostty/config
+    elif [ -d /home/"$USER"/.dotfiles/.config/wezterm ]; then
+      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Catppuccin Mocha',/g" /home/"$USER"/.dotfiles/.config/wezterm/wezterm.lua 
     else
       echo "Terminal not updated"
     fi
 		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin-nvim',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
+      sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin-nvim',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
+      sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
 		else
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/catppuccin")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    if [ "$XDG_CURRENT_DESKTOP" = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/catppuccin")@g' /home/"$USER"/.dotfiles/.config/hypr/hyprland.lua
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
       nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    elif [ "$XDG_CURRENT_DESKTOP" = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.catppuccin\ import\ colors/g' /home/"$USER"/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png",@g' /home/"$USER"/.dotfiles/.config/qtile/config.py
       qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/catppuccin.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+		elif  [ "$XDG_CURRENT_DESKTOP" = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/catppuccin.conf@g' /home/"$USER"/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/catppuccin.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/catppuccin.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/catppuccin.png &"
       nohup bash -c "mmsg dispatch reload_config"
     else
       echo "What?"
     fi
     # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e1e2e"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#cdd6f4"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#cba6f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e1e2e"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#cdd6f4"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#cba6f7"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
     killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to Catppuccin" &
-  }
-  dracula () {
-    # rofi
-    sed -i 's@themes/*.*@themes/dracula"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Dracula@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Dracula (Official)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
-		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme dracula'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'dracula',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'doom-dracula\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-		else
-			echo "Editor not updated"
-		fi
-		# WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/dracula")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
-      nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.dracula\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/dracula.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-      qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/dracula.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/dracula.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/dracula.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/dracula.png &"
-      nohup bash -c "mmsg dispatch reload_config"
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#282A36"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E6E6E6"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#5AF78E"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to Dracula" &
   }
   everforest () {
     # rofi
-    sed -i 's@themes/*.*@themes/everforest"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    sed -i 's@themes/*.*@themes/everforest"@g' /home/"$USER"/.dotfiles/.config/rofi/config.rasi
     # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    if [ -d /home/"$USER"/.dotfiles/.config/ghostty ]; then
+      sed -i 's@themes/*.*@themes/Everforest\ Dark\ Hard@g' /home/"$USER"/.dotfiles/.config/ghostty/config
+    elif [ -d /home/"$USER"/.dotfiles/.config/wezterm ]; then
+      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Everforest Dark (Gogh)',/g" /home/"$USER"/.dotfiles/.config/wezterm/wezterm.lua 
     else
       echo "Terminal not updated"
     fi
 		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
+      sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
+      sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
 		else
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/everforest")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    if [ "$XDG_CURRENT_DESKTOP" = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/everforest")@g' /home/"$USER"/.dotfiles/.config/hypr/hyprland.lua
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
       nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    elif [ "$XDG_CURRENT_DESKTOP" = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.everforest\ import\ colors/g' /home/"$USER"/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png",@g' /home/"$USER"/.dotfiles/.config/qtile/config.py
       qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/everforest.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+		elif  [ "$XDG_CURRENT_DESKTOP" = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/everforest.conf@g' /home/"$USER"/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/everforest.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/everforest.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/everforest.png &"
       nohup bash -c "mmsg dispatch reload_config"
     else
       echo "What?"
     fi
     # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e2326"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#d3c6aa"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#a7c080"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1e2326"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#d3c6aa"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#a7c080"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
     killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to everforest" &
-  }
-  grayscale () {
-    # rofi
-    sed -i 's@themes/*.*@themes/grayscale"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/studio1804@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Grayscale (dark) (terminal.sexy)',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
-		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme no-clown-fiesta'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'no-clown-fiesta',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'doom-homage-black\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-		else
-			echo "Editor not updated"
-		fi
-    # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/grayscale")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
-      nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.grayscale\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-      qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/grayscale.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/grayscale.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/grayscale.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/grayscale.png &"
-      nohup bash -c "mmsg dispatch reload_config"
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#151515"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#E1E1E1"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#E1E1E1"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to grayscale" &
-  }
-  gruvbox () {
-    # rofi
-    sed -i 's@themes/*.*@themes/gruvbox"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
-    # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Gruvbox Dark@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'GruvboxDark',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
-    else
-      echo "Terminal not updated"
-    fi
-		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme gruvbox'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'gruvbox',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'doom-gruvbox\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
-		else
-			echo "Editor not updated"
-		fi
-    # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/gruvbox")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
-      nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.gruvbox\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
-      qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/gruvbox.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/gruvbox.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/gruvbox.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-      nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/gruvbox.png &"
-      nohup bash -c "mmsg dispatch reload_config"
-    else
-      echo "What?"
-    fi
-    # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#282828"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#ebdbb2"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#98971a"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to Gruvbox" &
   }
   spacegray () {
     # rofi
-    sed -i 's@themes/*.*@themes/spacegray"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    sed -i 's@themes/*.*@themes/spacegray"@g' /home/"$USER"/.dotfiles/.config/rofi/config.rasi
 		# terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/Spacegray@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    if [ -d /home/"$USER"/.dotfiles/.config/ghostty ]; then
+      sed -i 's@themes/*.*@themes/Spacegray@g' /home/"$USER"/.dotfiles/.config/ghostty/config
+    elif [ -d /home/"$USER"/.dotfiles/.config/wezterm ]; then
+      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'SpaceGray',/g" /home/"$USER"/.dotfiles/.config/wezterm/wezterm.lua 
     else
       echo "Terminal not updated"
     fi
 		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
+      sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
+      sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
 		else
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/spacegray")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    if [ "$XDG_CURRENT_DESKTOP" = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/spacegray")@g' /home/"$USER"/.dotfiles/.config/hypr/hyprland.lua
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
       nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    elif [ "$XDG_CURRENT_DESKTOP" = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.spacegray\ import\ colors/g' /home/"$USER"/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png",@g' /home/"$USER"/.dotfiles/.config/qtile/config.py
       qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/spacegray.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+		elif  [ "$XDG_CURRENT_DESKTOP" = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/spacegray.conf@g' /home/"$USER"/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/spacegray.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/spacegray.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/spacegray.png &"
       nohup bash -c "mmsg dispatch reload_config"
     else
       echo "What?"
     fi
     # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#20242d"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#b3b8c3"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#b04b57"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#20242d"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#b3b8c3"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#b04b57"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
     killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to Spacegray" &
   }
   tokyonight () {
     # rofi
-    sed -i 's@themes/*.*@themes/tokyonight"@g' /home/$USER/.dotfiles/.config/rofi/config.rasi
+    sed -i 's@themes/*.*@themes/tokyonight"@g' /home/"$USER"/.dotfiles/.config/rofi/config.rasi
     # terminal
-    if [ -d /home/$USER/.dotfiles/.config/ghostty ]; then
-      sed -i 's@themes/*.*@themes/TokyoNight@g' /home/$USER/.dotfiles/.config/ghostty/config
-    elif [ -d /home/$USER/.dotfiles/.config/wezterm ]; then
-      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/$USER/.dotfiles/.config/wezterm/wezterm.lua 
+    if [ -d /home/"$USER"/.dotfiles/.config/ghostty ]; then
+      sed -i 's@themes/*.*@themes/TokyoNight@g' /home/"$USER"/.dotfiles/.config/ghostty/config
+    elif [ -d /home/"$USER"/.dotfiles/.config/wezterm ]; then
+      sed -i "s/color_scheme\ =\ '*.*/color_scheme\ =\ 'Tokyo Night',/g" /home/"$USER"/.dotfiles/.config/wezterm/wezterm.lua 
     else
       echo "Terminal not updated"
     fi
 		# editors
-		if [ -d /home/$USER/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/$USER/.dotfiles/.config/nvim/lua/core/colorscheme.lua
-      sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/$USER/.dotfiles/.config/nvim/lua/plugins/lualine.lua
-		elif [ -d /home/$USER/.dotfiles/.config/emacs ]; then
-      sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/$USER/.dotfiles/.config/emacs/init.el
+		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
+      sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
+		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
+      sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
 		else
 			echo "Editor not updated"
 		fi
     # WMs
-    if [ $XDG_CURRENT_DESKTOP = 'Hyprland' ]; then
-			sed -i 's@themes/*.*@themes/tokyonight")@g' /home/$USER/.dotfiles/.config/hypr/hyprland.lua
-			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
-			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
+    if [ "$XDG_CURRENT_DESKTOP" = 'Hyprland' ]; then
+			sed -i 's@themes/*.*@themes/tokyonight")@g' /home/"$USER"/.dotfiles/.config/hypr/hyprland.lua
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
+			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
       nohup bash -c "killall .waybar-wrapped && waybar & disown"
-    elif [ $XDG_CURRENT_DESKTOP = 'qtile' ]; then
-			sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/$USER/.dotfiles/.config/qtile/config.py
-			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/$USER/.dotfiles/.config/qtile/config.py
+    elif [ "$XDG_CURRENT_DESKTOP" = 'qtile' ]; then
+			sed -i 's/themes.*\ import\ colors/themes.tokyonight\ import\ colors/g' /home/"$USER"/.dotfiles/.config/qtile/config.py
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png",@g' /home/"$USER"/.dotfiles/.config/qtile/config.py
       qtile cmd-obj -o cmd -f reload_config
-		elif  [ $XDG_CURRENT_DESKTOP = 'mango' ]; then
-			sed -i 's@themes/*.*@themes/tokyonight.conf@g' /home/$USER/.dotfiles/.config/mango/config.conf
-			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/$USER/.dotfiles/.config/waybar/style.css
-			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/$USER/.dotfiles/.config/hypr/hyprlock.conf
+		elif  [ "$XDG_CURRENT_DESKTOP" = 'mango' ]; then
+			sed -i 's@themes/*.*@themes/tokyonight.conf@g' /home/"$USER"/.dotfiles/.config/mango/config.conf
+			sed -i 's@themes/*.*@themes/tokyonight.css";@g' /home/"$USER"/.dotfiles/.config/waybar/style.css
+			sed -i 's@wallpapers/*.*@wallpapers/tokyonight.png@g' /home/"$USER"/.dotfiles/.config/hypr/hyprlock.conf
       nohup bash -c "pkill swaybg; swaybg -i ~/.dotfiles/wallpapers/tokyonight.png &"
       nohup bash -c "mmsg dispatch reload_config"
     else
       echo "What?"
     fi
     # dunst
-    sed -i 's@background\ =\ "#*.*@background\ =\ "#1a1b26"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#a9b1d6"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
-    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7aa2f7"@g' /home/$USER/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@background\ =\ "#*.*@background\ =\ "#1a1b26"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@foreground\ =\ "#*.*@foreground\ =\ "#a9b1d6"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
+    sed -i 's@frame_color\ =\ "#*.*@frame_color\ =\ "#7aa2f7"@g' /home/"$USER"/.dotfiles/.config/dunst/dunstrc
     killall -e .dunst-wrapped & sleep 1; dunstify "Theme switched to Tokyo Night" &
   }
   declare -a options=(
   catppuccin
-  dracula
   everforest
-  grayscale
-  gruvbox
   spacegray
   tokyonight
   "quit"
@@ -450,7 +272,6 @@ Themes () {
 }
 
 declare -a options=(
-Projects
 Restart
 Screenshot
 Themes
