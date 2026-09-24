@@ -82,7 +82,7 @@ Themes () {
     fi
 		# editors
 		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme catppuccin'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@colorscheme\ *.*@colorscheme catppuccin')@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
       sed -i "s@theme\ =\ *.*@theme\ =\ 'catppuccin-nvim',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
 		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
       sed -i "s/load-theme\ '*.*/load-theme 'catppuccin\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
@@ -128,7 +128,7 @@ Themes () {
     fi
 		# editors
 		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme everforest'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@colorscheme\ *.*@colorscheme everforest')@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
       sed -i "s@theme\ =\ *.*@theme\ =\ 'everforest',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
 		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
       sed -i "s/load-theme\ '*.*/load-theme 'everforest-hard-dark\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
@@ -174,7 +174,7 @@ Themes () {
     fi
 		# editors
 		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme nordic'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@colorscheme\ *.*@colorscheme nordic')@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
       sed -i "s@theme\ =\ *.*@theme\ =\ 'auto',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
 		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
       sed -i "s/load-theme\ '*.*/load-theme 'doom-spacegrey\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
@@ -220,7 +220,7 @@ Themes () {
     fi
 		# editors
 		if [ -d /home/"$USER"/.dotfiles/.config/nvim ]; then
-      sed -i "s@colorscheme\ *.*@colorscheme tokyonight'@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
+      sed -i "s@colorscheme\ *.*@colorscheme tokyonight')@g" /home/"$USER"/.dotfiles/.config/nvim/lua/core/colorscheme.lua
       sed -i "s@theme\ =\ *.*@theme\ =\ 'tokyonight',@g" /home/"$USER"/.dotfiles/.config/nvim/lua/plugins/lualine.lua
 		elif [ -d /home/"$USER"/.dotfiles/.config/emacs ]; then
       sed -i "s/load-theme\ '*.*/load-theme 'doom-tokyo-night\ :no-confirm)/g" /home/"$USER"/.dotfiles/.config/emacs/init.el
